@@ -10,7 +10,7 @@ import com.example.superheroes.data.Superhero
 import com.example.superheroes.databinding.ItemSuperheroBinding
 import com.squareup.picasso.Picasso
 
-class SuperheroAdapter(private var items:List<Superhero> = listOf()) : RecyclerView.Adapter<SuperheroViewHolder>() {
+class SuperheroAdapter(private var items:List<Superhero> = listOf(), val onClickListener:(Int)->Unit) : RecyclerView.Adapter<SuperheroViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuperheroViewHolder {
         val binding = ItemSuperheroBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -21,7 +21,7 @@ class SuperheroAdapter(private var items:List<Superhero> = listOf()) : RecyclerV
 
     override fun onBindViewHolder(holder: SuperheroViewHolder, position: Int) {
         holder.render(items[position])
-        //holder.itemView.setOnClickListener { onClickListener(position) }
+        holder.itemView.setOnClickListener { onClickListener(position) } // capturamos el click realizada en la imagen
     }
 
     fun updateItems(results: List<Superhero>?) {

@@ -17,8 +17,16 @@ class Superhero (
 
 }
 
+class Biography (
+    @SerializedName("full-name") val realName:String,
+    @SerializedName("publisher") val publisher:String
+) {
+
+}
+
 class Image (
     @SerializedName("url") val url:String
 ) {
+
 
 }
